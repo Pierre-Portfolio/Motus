@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0a1230" />
+  <title>Motus — Le jeu de mots</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo-dot"></span>
+      <h1>MOTUS</h1>
+    </div>
+    <button id="btn-help" class="icon-btn" aria-label="Règles du jeu" title="Règles">?</button>
+  </header>
+
+  <!-- ÉCRAN D'ACCUEIL -->
+  <main id="screen-home" class="screen active">
+    <div class="home-card">
+      <p class="tagline">Trouvez le mot mystère. Une lettre offerte, six essais.</p>
+
+      <section class="setup-block">
+        <h2>Longueur du mot</h2>
+        <div id="length-picker" class="pill-row">
+          <button class="pill" data-length="6">6 lettres</button>
+          <button class="pill active" data-length="7">7 lettres</button>
+          <button class="pill" data-length="8">8 lettres</button>
+          <button class="pill" data-length="9">9 lettres</button>
+        </div>
+      </section>
+
+      <section class="setup-block">
+        <h2>Difficulté</h2>
+        <div id="difficulty-picker" class="diff-grid">
+          <button class="diff" data-diff="tres_facile"><span class="dots d1"></span>Très facile</button>
+          <button class="diff active" data-diff="facile"><span class="dots d2"></span>Facile</button>
+          <button class="diff" data-diff="moyen"><span class="dots d3"></span>Moyen</button>
+          <button class="diff" data-diff="difficile"><span class="dots d4"></span>Difficile</button>
+          <button class="diff" data-diff="tres_difficile"><span class="dots d5"></span>Très difficile</button>
+        </div>
+      </section>
+
+      <button id="btn-play" class="btn-primary">Jouer</button>
+    </div>
+  </main>
+
+  <!-- ÉCRAN DE JEU -->
+  <main id="screen-game" class="screen">
+    <div class="game-meta">
+      <button id="btn-back" class="icon-btn" aria-label="Retour" title="Retour">&larr;</button>
+      <div class="meta-tags">
+        <span id="tag-length" class="tag">7 lettres</span>
+        <span id="tag-diff" class="tag tag-accent">Facile</span>
+      </div>
+      <button id="btn-new" class="icon-btn" aria-label="Nouveau mot" title="Nouveau mot">&#x21bb;</button>
+    </div>
+
+    <div id="board" class="board" role="grid" aria-label="Grille de jeu"></div>
+
+    <div id="message" class="message" role="status" aria-live="polite"></div>
+
+    <div id="keyboard" class="keyboard"></div>
+  </main>
+
+  <!-- MODALE RÈGLES -->
+  <div id="modal-help" class="modal" hidden>
+    <div class="modal-card">
+      <button class="modal-close" data-close-help aria-label="Fermer">&times;</button>
+      <h2>Comment jouer&nbsp;?</h2>
+      <p>Devinez le mot caché en <strong>6 essais</strong>. La première lettre vous est offerte.</p>
+      <ul class="legend">
+        <li><span class="swatch ok"></span> Lettre bien placée</li>
+        <li><span class="swatch present"></span> Lettre présente, mal placée</li>
+        <li><span class="swatch absent"></span> Lettre absente du mot</li>
+      </ul>
+      <p class="hint">Chaque proposition doit être un mot de la bonne longueur. Tapez au clavier ou utilisez le clavier à l'écran.</p>
+      <button class="btn-primary" data-close-help>Compris&nbsp;!</button>
+    </div>
+  </div>
+
+  <!-- MODALE FIN DE PARTIE -->
+  <div id="modal-end" class="modal" hidden>
+    <div class="modal-card">
+      <div id="end-emoji" class="end-emoji">🎉</div>
+      <h2 id="end-title">Bravo&nbsp;!</h2>
+      <p id="end-text">Vous avez trouvé le mot.</p>
+      <div class="end-word">
+        <span class="end-word-label">Le mot était</span>
+        <strong id="end-word"></strong>
+      </div>
+      <div class="end-actions">
+        <button id="btn-replay" class="btn-primary">Nouveau mot</button>
+        <button id="btn-menu" class="btn-ghost">Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="words.js"></script>
+  <script src="dico.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
