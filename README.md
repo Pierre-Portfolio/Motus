@@ -74,15 +74,19 @@ python -m http.server 8123
 ## Structure du projet
 ```
 Motus/
-  index.html          → Structure de la page
-  style.css           → Thème sombre, design responsive
-  script.js           → Logique du jeu (grille, clavier, scoring)
-  words.js            → 850 mots à deviner (par longueur / difficulté)
-  dico.js             → Dictionnaire de validation (~125 000 mots)
-  words.json          → Listes de mots au format JSON
-  build_words.py      → Script de génération des listes
+  index.html              → Structure de la page (seul fichier à la racine)
+  css/
+    style.css             → Thème sombre, design responsive
+  js/
+    script.js             → Logique du jeu (grille, clavier, scoring)
+  data/
+    words.js              → 850 mots à deviner (par longueur / difficulté)
+    dico.js               → Dictionnaire de validation (~125 000 mots)
+    words.json            → Listes de mots au format JSON
+  tools/
+    build_words.py        → Script de génération des listes
   assets/
-    images/github/    → Images README
+    images/github/        → Images README
 ```
 
 ## Les données : mots & difficulté
